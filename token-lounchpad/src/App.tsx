@@ -8,7 +8,6 @@ import {
 import '@solana/wallet-adapter-react-ui/styles.css';
 import TokenLounchpad from './TokenLounchpad';
 
-
 export function App() {
   return (
     <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>

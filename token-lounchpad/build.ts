@@ -1,9 +1,22 @@
 #!/usr/bin/env bun
-import { build, type BuildConfig } from "bun";
+import { build, BunPlugin, type BuildConfig } from "bun";
 import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
 import { rm } from "fs/promises";
 import path from "path";
+
+const myPlugin: BunPlugin = {
+  name: "buffer resolver",
+  setup(build) {
+    build.onResolve({ filter: /^buffer$/ }, () => {
+      return {
+        path: require.resolve("buffer/"),
+      };
+    });
+  },
+};
+
+
 
 // Print help text if requested
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
@@ -144,7 +157,7 @@ console.log(`📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? 
 const result = await build({
   entrypoints,
   outdir,
-  plugins: [plugin],
+  plugins: [plugin,myPlugin],
   minify: true,
   target: "browser",
   sourcemap: "linked",
@@ -167,3 +180,4 @@ console.table(outputTable);
 const buildTime = (end - start).toFixed(2);
 
 console.log(`\n✅ Build completed in ${buildTime}ms\n`);
+

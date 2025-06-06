@@ -11,12 +11,15 @@
     "build": "bun run build.ts"
   },
   "dependencies": {
+    "@solana/spl-token": "^0.4.13",
     "@solana/wallet-adapter-base": "^0.9.26",
     "@solana/wallet-adapter-react": "^0.15.38",
     "@solana/wallet-adapter-react-ui": "^0.9.38",
     "@solana/wallet-adapter-wallets": "^0.19.36",
     "@solana/web3.js": "^1.98.2",
+    "buffer": "^6.0.3",
     "bun-plugin-tailwind": "^0.0.14",
+    "process": "^0.11.10",
     "react": "^19.1.0",
     "react-dom": "^19",
     "tailwindcss": "^4.0.6"
