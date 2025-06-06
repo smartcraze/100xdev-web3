@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+
+input{
+    @apply  p-2 m-2 border border-gray-300 rounded-md w-1/3;
+}
